@@ -1,0 +1,66 @@
+Algoritmo sin_titulo
+	Definir N, tipvehi Como Entero
+	Definir insumos, manoObra, total, descuento, totalFinal Como Real
+	Definir recaudoTotal, descuentosTotal, promedio Como Real
+	Definir motos, autos Como Entero
+	Repetir
+		Escribir 'ingrese el numero de vehiculos que se atenderan en este turno'
+		Leer N
+		Si N<=0 Entonces
+			Escribir 'numero no valido. porfavor escribir caracter mayor que 0'
+		FinSi
+	Hasta Que N>0
+	Para i<-1 Hasta N Con Paso 1 Hacer
+		Repetir
+			Escribir 'tipo del vehiculo numero ', i, '?'
+			Escribir '1 para motocicleta, 2 para automóvil.'
+			Leer tipvehi
+			Si tipvehi<>1 Y tipvehi<>2 Entonces
+				Escribir 'numero no validad. por favor escriba 1 o 2'
+			FinSi
+		Hasta Que tipvehi=1 O tipvehi=2
+		Si tipvehi=1 Entonces
+			motos <- motos+1
+			manoObra <- 25000
+		SiNo
+			autos <- autos+1
+			manoObra <- 45000
+		FinSi
+		Escribir 'Ingrese el valor de insumos y lubricantes:'
+		Leer insumos
+		Mientras insumos<0 Hacer
+			Escribir 'Error: el valor no puede ser negativo.'
+			Escribir 'Ingrese nuevamente el valor:'
+			Leer insumos
+		FinMientras
+		// Calcular total
+		total <- manoObra+insumos
+		// Calcular descuento
+		Si total>150000 Entonces
+			descuento <- total*0.10
+		SiNo
+			descuento <- 0
+		FinSi
+		totalFinal <- total-descuento
+		// Acumular valores
+		recaudoTotal <- recaudoTotal+totalFinal
+		descuentosTotal <- descuentosTotal+descuento
+		// Mostrar resultado del vehículo
+		Escribir 'Total del servicio: $', total
+		Escribir 'Descuento: $', descuento
+		Escribir 'Total a pagar: $', totalFinal
+		Escribir '-----------------------------'
+	FinPara
+	// Calcular promedio
+	promedio <- recaudoTotal/N
+	// Reporte final
+	Escribir ''
+	Escribir '========== REPORTE DEL TURNO =========='
+	Escribir 'Total de vehiculos atendidos: ', N
+	Escribir 'Motocicletas atendidas: ', motos
+	Escribir 'Automoviles atendidos: ', autos
+	Escribir 'Recaudo total neto: $', recaudoTotal
+	Escribir 'Total en descuentos: $', descuentosTotal
+	Escribir 'Promedio de recaudo por vehiculo: $', promedio
+	Escribir '========================================'
+FinAlgoritmo
