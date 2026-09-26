@@ -1,0 +1,63 @@
+Algoritmo stock_de_una_tienda
+	Definir stock_disponible, retiro_stock, opcion Como Entero
+	Definir dinero_recaudado, total_venta, descuento, subtotal Como Real
+	dinero_recaudado <- 0
+	Escribir 'hola usuario'
+	Escribir 'Ingrese la cantidad inicial de sacos disponibles'
+	Leer stock_disponible
+	Mientras stock_disponible<=0 Hacer
+		Escribir 'Cantidad no valida, debe ser mayor que cero'
+		Escribir 'Ingrese nuevamente la cantidad de sacos'
+		Leer stock_disponible
+	FinMientras
+	Repetir
+		Escribir '---------------------------'
+		Escribir 'MENU PRINCIPAL'
+		Escribir '1. Realizar una venta'
+		Escribir '2. Consultar stock disponible'
+		Escribir '3. Cierre de caja'
+		Escribir 'Seleccione una opcion'
+		Leer opcion
+		Según opcion Hacer
+			1:
+				Escribir 'Cuanto desea retirar'
+				Escribir 'Stock disponible: ', stock_disponible
+				Leer retiro_stock
+				Si retiro_stock<=0 Entonces
+					Escribir 'Cantidad no valida'
+				SiNo
+					Si retiro_stock>stock_disponible Entonces
+						Escribir 'ALERTA: stock no disponible'
+						Escribir 'La venta no se puede realizar'
+						Escribir 'Stock disponible: ', stock_disponible
+					SiNo
+						subtotal <- retiro_stock*85000
+						Si retiro_stock>=10 Entonces
+							descuento <- subtotal*0.08
+							total_venta <- subtotal-descuento
+						SiNo
+							descuento <- 0
+							total_venta <- subtotal
+						FinSi
+						stock_disponible <- stock_disponible-retiro_stock
+						dinero_recaudado <- dinero_recaudado+total_venta
+						Escribir 'Venta realizada correctamente'
+						Escribir 'Subtotal: $', subtotal
+						Escribir 'Descuento: $', descuento
+						Escribir 'Total a pagar: $', total_venta
+						Escribir 'Stock restante: ', stock_disponible
+					FinSi
+				FinSi
+			2:
+				Escribir 'Stock disponible: ', stock_disponible, ' sacos'
+			3:
+				Escribir '---------------------------'
+				Escribir 'CIERRE DE CAJA'
+				Escribir 'Dinero recaudado: $', dinero_recaudado
+				Escribir 'Sacos restantes: ', stock_disponible
+				Escribir 'Jornada finalizada'
+			De Otro Modo:
+				Escribir 'Opcion no valida'
+		FinSegún
+	Hasta Que opcion=3
+FinAlgoritmo
