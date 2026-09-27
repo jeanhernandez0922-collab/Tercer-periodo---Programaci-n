@@ -1,0 +1,67 @@
+Algoritmo Registro_Notas
+	Definir menu, cantidad, buenos, recuperables, malos Como Entero
+	Definir notaA, notaB, notaC, resultado, acumulado, media Como Real
+	cantidad = 0
+	buenos = 0
+	recuperables = 0
+	malos = 0
+	acumulado = 0
+	Repetir
+		Escribir '===== SISTEMA DE CALIFICACIONES ====='
+		Escribir '1. Ingresar notas'
+		Escribir '2. Ver resultados'
+		Escribir '3. Terminar'
+		Escribir 'Seleccione una opcion:'
+		Leer menu
+		Según menu Hacer
+			1:
+				Escribir 'Ingrese la primera nota:'
+				Leer notaA
+				Mientras notaA<0 O notaA>5 Hacer
+					Escribir 'Nota incorrecta. Digite una nota entre 0 y 5:'
+					Leer notaA
+				FinMientras
+				Escribir 'Ingrese la segunda nota:'
+				Leer notaB
+				Mientras notaB<0 O notaB>5 Hacer
+					Escribir 'Nota incorrecta. Digite una nota entre 0 y 5:'
+					Leer notaB
+				FinMientras
+				Escribir 'Ingrese la tercera nota:'
+				Leer notaC
+				Mientras notaC<0 O notaC>5 Hacer
+					Escribir 'Nota incorrecta. Digite una nota entre 0 y 5:'
+					Leer notaC
+				FinMientras
+				resultado <- notaA*0.3+notaB*0.3+notaC*0.4
+				acumulado <- acumulado+resultado
+				cantidad <- cantidad+1
+				Si resultado>=3.0 Entonces
+					buenos <- buenos+1
+				SiNo
+					Si resultado>=2.0 Entonces
+						recuperables <- recuperables+1
+					SiNo
+						malos <- malos+1
+					FinSi
+				FinSi
+				Escribir 'Nota definitiva: ', resultado
+			2:
+				Si cantidad>0 Entonces
+					media <- acumulado/cantidad
+					Escribir '===== RESULTADOS ====='
+					Escribir 'Estudiantes registrados: ', cantidad
+					Escribir 'Estudiantes aprobados: ', buenos
+					Escribir 'En recuperacion: ', recuperables
+					Escribir 'Reprobados: ', malos
+					Escribir 'Promedio general: ', media
+				SiNo
+					Escribir 'Todavia no se han registrado estudiantes.'
+				FinSi
+			3:
+				Escribir 'Programa finalizado.'
+			De Otro Modo:
+				Escribir 'La opcion seleccionada no existe.'
+		FinSegún
+	Hasta Que menu=3
+FinAlgoritmo
