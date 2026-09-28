@@ -1,0 +1,85 @@
+Algoritmo LOTE_DEL_DIA
+	Definir CAL, opcion Como Entero
+	Definir pesoA, pesoB, pesomayor Como Real
+	tipoA= 3500
+	tipoB= 2200
+	TOTALDINE = 0
+	TOTALPESO = 0
+	valorA = 0
+	valorB = 0
+	pesomayor = 0
+	Repetir
+		Escribir "elige por favor una opcion"
+		Escribir "1: tipo del lote"
+		Escribir "2: ver resumen de recopilacion del centro"
+		Escribir "3: salir"
+		Escribir "----------------------------------------------"
+		Leer opcion 
+		segun opcion hacer 
+			1:
+				
+				pesoA = 0
+				pesoB = 0
+				Escribir "de que calidaad es tu lote del dia de hoy?"
+				Escribir "tipo A = 1 o tipo B = 2"
+				Leer CAL
+				Escribir "----------------------------------------------"
+				Mientras CAL < 1 o CAL > 2 Hacer
+					Escribir 'OPCION INCORRECTA. POR FAVOR VUELVE A INTENTAR:'
+					Leer CAL
+				FinMientras
+				Escribir "----------------------------------------------"
+				si 	CAL = 1 Entonces
+					Escribir "cuanto es el peso en kg"
+					Leer pesoA
+					Mientras pesoA < 0 Hacer
+						Escribir "el peso debe ser positivo"
+						Leer pesoA
+					FinMientras
+				FinSi
+				si	CAL = 2 Entonces
+					Escribir "----------------------------------------------"
+					Escribir "cuanto es el peso en kg"
+					Leer pesoB
+					Mientras pesoB < 0 Hacer
+						Escribir "el peso debe ser positivo"
+						Leer pesoB
+					FinMientras
+			    finsi
+				
+				subvalorA = pesoA * tipoA
+				subvalorB = pesoB * tipoB
+				
+				Si subvalorA >= 500 Entonces
+					valorA = subvalorA * 0.95
+				SiNo
+					valorA = subvalorA
+				FinSi
+				Si subvalorB <= 100 Entonces
+					valorB = subvalorB * 1.03
+				SiNo
+					valorB = subvalorB
+				FinSi
+				
+				TOTALDINE = valorA + valorB
+				TOTALPESODIA = pesoA + pesoB 
+				TOTALPESO = pesoA + pesoB + TOTALPESO
+				
+				si TOTALPESODIA > pesomayor Entonces
+					pesomayor = TOTALPESODIA
+				FinSi
+				
+			2:
+				Escribir "----------------------------------------------"
+				
+				Escribir "total de dinero ganado: $", TOTALDINE
+				Escribir "total de peso de las frutas: ", TOTALPESO, "kg"
+				Escribir "el peso mayo fue de: ", pesomayor, "kg"
+			3:
+				Escribir "----------------------------------------------"
+				Escribir "programa finalizado"
+			De Otro Modo:
+				Escribir "la opcion no existe"
+		FinSegun
+    Hasta que opcion = 3
+FinAlgoritmo
